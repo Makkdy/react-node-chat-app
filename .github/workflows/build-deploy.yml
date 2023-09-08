@@ -12,10 +12,7 @@
 #         # Action for step 2
 
 name: Build and Test
-on:
-  push:
-    branches:
-      - main
+on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
