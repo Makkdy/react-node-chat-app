@@ -1,0 +1,9 @@
+version: '3'
+services:
+  client-react:
+    build: .
+    image: mubbaseer/chatapp-client-react
+    environment:
+      - BACKEND_URL=http://localhost:3001
+    ports:
+      - 3000:3000
