@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chatapp-configuration
+data:
+  # property-like keys; each key maps to a simple value
+      # server-config
+  NODE_PORT: "3001"
+  CHAT_ENGINE_PROJECT_ID: 04b533d6-d05a-4825-9d4a-ca32b8bb35a4
+  CHAT_ENGINE_PRIVATE_KEY: ea660016-5b3b-4603-9667-64f31f2eadd4
+      
+      # react-client config
+  # BACKEND_URL: process.env.BACKEND_URL || "http://localhost:3001"
+  # BACKEND_URL: http://chatapp-server-nodejs-service:3001
+  BACKEND_URL: chatapp-server-nodejs-service
+  BACKEND_PORT: "3001"
+  BACKEND_PROTOCOL: http
+  REACT_APP_CHAT_ENGINE_PROJECT_ID: 04b533d6-d05a-4825-9d4a-ca32b8bb35a4
+
+  # # file-like keys
+  # game.properties: |
+  #   enemy.types=aliens,monsters
+  #   player.maximum-lives=5    
+  # user-interface.properties: |
+  #   color.good=purple
+  #   color.bad=yellow
+  #   allow.textmode=true  

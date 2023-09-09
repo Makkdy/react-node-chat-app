@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatapp-server-nodejs-deployement
+  labels:
+    app: chatapp-server-nodejs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chatapp-server-nodejs
+  template:
+    metadata:
+      labels:
+        app: chatapp-server-nodejs
+    spec:
+      containers:
+        - name: chatapp-server-nodejs
+          image: mubbaseer/chatapp-server-nodejs 
+          env:
+            - name: NODE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: chatapp-configuration  # Name of the ConfigMap
+                  key: NODE_PORT
+            - name: CHAT_ENGINE_PROJECT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: chatapp-configuration  # Name of the ConfigMap
+                  key: CHAT_ENGINE_PROJECT_ID
+            - name: CHAT_ENGINE_PRIVATE_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: chatapp-configuration  # Name of the ConfigMap
+                  key: CHAT_ENGINE_PRIVATE_KEY
+          # resources:
+          #   requests:
+          #     memory: "256Mi"
+          #     cpu: "0.5"
+          #   limits:
+          #     memory: "512Mi"
+          #     cpu: "1"
+          ports:
+          - containerPort: 3001
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatapp-server-nodejs-service
+spec:
+  type: NodePort
+  selector:
+    app: chatapp-server-nodejs
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001

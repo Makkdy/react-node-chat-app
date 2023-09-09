@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { BACKEND_URL } from "./config/config";
+import { BACKEND_URL, BACKEND_PORT, BACKEND_PROTOCOL } from "./config/config";
 
 const AuthPage = (props) => {
   const [username, setUsername] = useState();
@@ -12,7 +12,7 @@ const AuthPage = (props) => {
   const onLogin = (e) => {
     e.preventDefault();
     axios
-      .post(`${BACKEND_URL}/login`, { username, secret })
+      .post(`${BACKEND_PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/login`, { username, secret })
       .then((r) => props.onAuth({ ...r.data, secret })) // NOTE: over-ride secret
       .catch((e) => console.log(JSON.stringify(e.response.data)));
   };
@@ -20,7 +20,7 @@ const AuthPage = (props) => {
   const onSignup = (e) => {
     e.preventDefault();
     axios
-      .post(`${BACKEND_URL}/signup`, {
+      .post(`${BACKEND_PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/signup`, {
         username,
         secret,
         email,
