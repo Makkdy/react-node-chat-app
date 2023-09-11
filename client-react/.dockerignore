@@ -1,0 +1,13 @@
+.gitignore
+.git*
+node_modules
+.env
+.gitignore
+Dockerfile
+docker-compose.yml
+
+server-nodejs/node_modules
+server-nodejs/.env
+server-nodejs/.gitignore
+server-nodejs/Dockerfile
+server-nodejs/docker-compose.yml

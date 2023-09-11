@@ -12,10 +12,10 @@ data:
       # react-client config
   # BACKEND_URL: process.env.BACKEND_URL || "http://localhost:3001"
   # BACKEND_URL: http://chatapp-server-nodejs-service:3001
-  BACKEND_URL: chatapp-server-nodejs-service
-  BACKEND_PORT: "3001"
-  BACKEND_PROTOCOL: http
+  REACT_APP_BACKEND_URL: http://localhost/api
   REACT_APP_CHAT_ENGINE_PROJECT_ID: 04b533d6-d05a-4825-9d4a-ca32b8bb35a4
+  # BACKEND_PORT: "3001"
+  # BACKEND_PROTOCOL: http
 
   # # file-like keys
   # game.properties: |

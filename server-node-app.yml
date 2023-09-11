@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chatapp-server-nodejs-deployement
+  name: chatapp-server-nodejs-deployment
   labels:
     app: chatapp-server-nodejs
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: chatapp-server-nodejs

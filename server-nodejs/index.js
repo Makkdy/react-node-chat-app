@@ -28,6 +28,7 @@ app.post("/signup", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
+  console.log(`successfully getting env: ${NODE_PORT}`)
   const { username, secret } = req.body;
 
   // Fetch this user from Chat Engine in this project!

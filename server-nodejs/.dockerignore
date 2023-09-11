@@ -1,0 +1,13 @@
+.gitignore
+.git*
+client-react/node_modules
+client-react/.env
+client-react/.gitignore
+client-react/Dockerfile
+client-react/docker-compose.yml
+
+node_modules
+.env
+.gitignore
+Dockerfile
+docker-compose.yml

@@ -18,21 +18,11 @@ spec:
         - name: chatapp-client-react
           image: mubbaseer/chatapp-client-react
           env:
-            - name: BACKEND_PROTOCOL
+            - name: REACT_APP_BACKEND_URL
               valueFrom:
                 configMapKeyRef:
                   name: chatapp-configuration  # Name of the ConfigMap
-                  key: BACKEND_PROTOCOL
-            - name: BACKEND_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: chatapp-configuration  # Name of the ConfigMap
-                  key: BACKEND_URL
-            - name: BACKEND_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: chatapp-configuration  # Name of the ConfigMap
-                  key: BACKEND_PORT
+                  key: REACT_APP_BACKEND_URL
             - name: REACT_APP_CHAT_ENGINE_PROJECT_ID
               valueFrom:
                 configMapKeyRef:
@@ -46,7 +36,7 @@ spec:
           #     memory: "1024Mi"
           #     cpu: "4"
           ports:
-          - containerPort: 3000
+          - containerPort: 80
 
 ---
 
@@ -55,10 +45,10 @@ kind: Service
 metadata:
   name: chatapp-client-react-service
 spec:
-  type: NodePort
+  # type: NodePort
   selector:
     app: chatapp-client-react
   ports:
     - protocol: TCP
       port: 3000
-      targetPort: 3000
+      targetPort: 80

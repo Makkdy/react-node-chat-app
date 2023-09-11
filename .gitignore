@@ -1,4 +1,5 @@
-client-react/node-modules
+client-react/node_modules
+client-react/build
 client-react/.env
-server-nodejs/node-modules
+server-nodejs/node_modules
 server-nodejs/.env
