@@ -5,7 +5,7 @@ metadata:
   labels:
     app: chatapp-client-react
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: chatapp-client-react
@@ -28,13 +28,6 @@ spec:
                 configMapKeyRef:
                   name: chatapp-configuration  # Name of the ConfigMap
                   key: REACT_APP_CHAT_ENGINE_PROJECT_ID
-          # resources:
-          #   requests:
-          #     memory: "256Mi"
-          #     cpu: "0.5"
-          #   limits:
-          #     memory: "1024Mi"
-          #     cpu: "4"
           ports:
           - containerPort: 80
 
@@ -45,7 +38,7 @@ kind: Service
 metadata:
   name: chatapp-client-react-service
 spec:
-  # type: NodePort
+  type: LoadBalancer
   selector:
     app: chatapp-client-react
   ports:

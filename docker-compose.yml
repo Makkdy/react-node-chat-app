@@ -1,0 +1,23 @@
+version: '3'
+services:
+  client-react:
+    build: 
+      context: ./client-react/.
+      args:
+        - REACT_APP_BACKEND_URL=http://localhost:3001
+        - REACT_APP_CHAT_ENGINE_PROJECT_ID=98496bbc-176c-49b0-98dc-1d6d44334e0c
+    image: mubbaseer/chatapp-client-react
+    depends_on:
+      - server-nodejs
+    ports:
+      - 3000:80
+
+  server-nodejs:
+    build: ./server-nodejs/.
+    image: mubbaseer/chatapp-server-nodejs
+    environment:
+      - NODE_PORT=3001
+      - CHAT_ENGINE_PROJECT_ID=98496bbc-176c-49b0-98dc-1d6d44334e0c
+      - CHAT_ENGINE_PRIVATE_KEY=444a3eb9-fed6-46a0-a055-e04a441d4b0a
+    ports:
+      - 3001:3001

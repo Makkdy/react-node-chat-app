@@ -5,7 +5,7 @@ metadata:
   labels:
     app: chatapp-server-nodejs
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: chatapp-server-nodejs
@@ -50,7 +50,7 @@ kind: Service
 metadata:
   name: chatapp-server-nodejs-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: chatapp-server-nodejs
   ports:

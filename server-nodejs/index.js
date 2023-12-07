@@ -10,6 +10,13 @@ app.use(cors({ origin: true }));
 // const CHAT_ENGINE_PROJECT_ID = `${CHAT_ENGINE_PROJECT_ID}`;
 // const CHAT_ENGINE_PRIVATE_KEY = `${CHAT_ENGINE_PRIVATE_KEY}`;
 
+
+// Define a route for the '/' endpoint
+app.get('/', (req, res) => {
+  res.status(200).send('Hello, this is the root API endpoint!');
+});
+
+
 app.post("/signup", async (req, res) => {
   const { username, secret, email, first_name, last_name } = req.body;
 

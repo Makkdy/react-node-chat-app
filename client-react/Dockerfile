@@ -8,17 +8,22 @@
 # CMD [ "npm", "run", "start" ]
 
 #stage 1
-FROM node:16.10.0-alpine as builder
+FROM node as build
 WORKDIR /app
 COPY package.json .
-COPY yarn.lock .
-RUN yarn install
+RUN npm install
 COPY . .
-RUN yarn build
+ARG REACT_APP_BACKEND_URL
+ARG REACT_APP_CHAT_ENGINE_PROJECT_ID
+ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
+ENV REACT_APP_CHAT_ENGINE_PROJECT_ID=$REACT_APP_CHAT_ENGINE_PROJECT_ID
+RUN npm run build
 
 #stage 2
-FROM nginx:1.19.0-alpine
+FROM nginx
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /app/build .
+ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
+ENV REACT_APP_CHAT_ENGINE_PROJECT_ID=$REACT_APP_CHAT_ENGINE_PROJECT_ID
+COPY --from=build /app/build .
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

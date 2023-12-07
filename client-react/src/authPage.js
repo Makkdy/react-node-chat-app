@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { BACKEND_URL, REACT_APP_CHAT_ENGINE_PROJECT_ID } from "./config/config";
+import { REACT_APP_BACKEND_URL, REACT_APP_CHAT_ENGINE_PROJECT_ID } from "./config/config";
 
 const AuthPage = (props) => {
   const [username, setUsername] = useState();
@@ -11,11 +11,11 @@ const AuthPage = (props) => {
   
 
   const onLogin = (e) => {
-    console.log(`${BACKEND_URL}`);
+    console.log(`${REACT_APP_BACKEND_URL}`);
     console.log(REACT_APP_CHAT_ENGINE_PROJECT_ID);
     e.preventDefault();
     axios
-      .post(`${BACKEND_URL}/login`, { username, secret })
+      .post(`${REACT_APP_BACKEND_URL}/login`, { username, secret })
       .then((r) => props.onAuth({ ...r.data, secret })) // NOTE: over-ride secret
       .catch((e) => console.log(JSON.stringify(e.response.data)));
   };
@@ -23,7 +23,7 @@ const AuthPage = (props) => {
   const onSignup = (e) => {
     e.preventDefault();
     axios
-      .post(`${BACKEND_URL}/signup`, {
+      .post(`${REACT_APP_BACKEND_URL}/signup`, {
         username,
         secret,
         email,

@@ -6,22 +6,8 @@ data:
   # property-like keys; each key maps to a simple value
       # server-config
   NODE_PORT: "3001"
-  CHAT_ENGINE_PROJECT_ID: 04b533d6-d05a-4825-9d4a-ca32b8bb35a4
-  CHAT_ENGINE_PRIVATE_KEY: ea660016-5b3b-4603-9667-64f31f2eadd4
-      
-      # react-client config
-  # BACKEND_URL: process.env.BACKEND_URL || "http://localhost:3001"
-  # BACKEND_URL: http://chatapp-server-nodejs-service:3001
-  REACT_APP_BACKEND_URL: http://localhost/api
-  REACT_APP_CHAT_ENGINE_PROJECT_ID: 04b533d6-d05a-4825-9d4a-ca32b8bb35a4
-  # BACKEND_PORT: "3001"
-  # BACKEND_PROTOCOL: http
+  CHAT_ENGINE_PROJECT_ID: 98496bbc-176c-49b0-98dc-1d6d44334e0c
+  CHAT_ENGINE_PRIVATE_KEY: 444a3eb9-fed6-46a0-a055-e04a441d4b0a
 
-  # # file-like keys
-  # game.properties: |
-  #   enemy.types=aliens,monsters
-  #   player.maximum-lives=5    
-  # user-interface.properties: |
-  #   color.good=purple
-  #   color.bad=yellow
-  #   allow.textmode=true  
+  REACT_APP_BACKEND_URL: http://localhost:3001
+  REACT_APP_CHAT_ENGINE_PROJECT_ID: 98496bbc-176c-49b0-98dc-1d6d44334e0c 
